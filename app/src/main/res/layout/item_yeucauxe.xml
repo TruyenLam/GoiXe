@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/aline5"
     android:paddingBottom="@dimen/aline5"
     android:layout_margin="@dimen/aline5"
+    android:background="#EFE5FD"
     >
 
 
@@ -18,7 +19,7 @@
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
         android:padding="@dimen/aline5"
-        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+
         >
 
         <RelativeLayout
