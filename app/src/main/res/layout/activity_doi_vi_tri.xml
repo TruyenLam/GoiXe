@@ -94,8 +94,8 @@
 
     <Button
         android:id="@+id/btn_doivitri_updatexe"
-        android:layout_width="128dp"
-        android:layout_height="59dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/button_3state"

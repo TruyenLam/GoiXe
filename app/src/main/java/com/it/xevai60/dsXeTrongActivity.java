@@ -99,9 +99,11 @@ public class dsXeTrongActivity extends AppCompatActivity {
         imgbtn_dsxetrong_Scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                init();
+                //init();
+                new IntentIntegrator(dsXeTrongActivity.this).initiateScan(); // `this` is the current Activity
             }
         });
+
 
     }
     public void init(){

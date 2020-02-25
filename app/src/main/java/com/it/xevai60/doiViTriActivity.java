@@ -104,7 +104,8 @@ public class doiViTriActivity extends AppCompatActivity {
             public void onClick(View v) {
                 control_vitri=1;
                 control_xe=0;
-                init();
+                //init();
+                new IntentIntegrator(doiViTriActivity.this).initiateScan();
             }
         });
         imgbtn_doivitri_scanXe.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +113,8 @@ public class doiViTriActivity extends AppCompatActivity {
             public void onClick(View v) {
                 control_vitri=0;
                 control_xe=1;
-                init();
+                //init();
+                new IntentIntegrator(doiViTriActivity.this).initiateScan();
             }
         });
 

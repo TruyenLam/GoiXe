@@ -97,7 +97,8 @@ public class tapKetActivity extends AppCompatActivity {
         imgbtn_tapket_Scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                init();
+                //init();
+                new IntentIntegrator(tapKetActivity.this).initiateScan();
             }
         });
     }
