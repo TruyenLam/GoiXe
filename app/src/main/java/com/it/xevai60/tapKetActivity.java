@@ -103,7 +103,7 @@ public class tapKetActivity extends AppCompatActivity {
     }
     public void init(){
         IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
         integrator .setPrompt("Đang đọc QR code");
         integrator.setCameraId(0);
         // beep khi scan qr thành công
