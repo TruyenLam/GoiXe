@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_yeucauxe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+
+        android:id="@+id/tv_yeucauxe_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_yeucauxe_nguoiyeucau"
+        app:layout_constraintStart_toEndOf="@+id/tv_yeucauxe_mame"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_vitrican"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Vị trí cần"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_yeucauxe_vitrican_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_yeucauxe_loaiyeucau" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_mame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_yeucauxe_loaiyeucau"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_nguoiyeucau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="người Yêu Cầu"
+        android:textColor="#3949AB"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_thoigiancan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="thời gian cần"
+        android:textColor="#FB8C00"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_yeucauxe_mame" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_loaiyeucau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="loại yeu cầu"
+        android:textColor="#D81B60"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_yeucauxe_vitrican_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Ví Trí Cần"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_yeucauxe_loaiyeucau" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

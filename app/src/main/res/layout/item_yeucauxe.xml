@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_yeucauxe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/aline5"
+    android:paddingBottom="@dimen/aline5"
+    android:layout_margin="@dimen/aline5"
+    >
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:padding="@dimen/aline5"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_yeucauxe_loaiyeucau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="5dp"
+                android:text="loại yeu cầu"
+                android:textColor="#D81B60"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_yeucauxe_vitrican_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_yeucauxe_loaiyeucau"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Ví Trí Cần"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_yeucauxe_vitrican"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_yeucauxe_loaiyeucau"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tv_yeucauxe_vitrican_text"
+                android:text="Vị trí cần"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_yeucauxe_mame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@id/tv_yeucauxe_loaiyeucau"
+                android:textSize="18sp" />
+
+            <TextView
+
+                android:id="@+id/tv_yeucauxe_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@id/tv_yeucauxe_mame" />
+
+            <TextView
+                android:id="@+id/tv_yeucauxe_nguoiyeucau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="người Yêu Cầu"
+                android:textColor="#3949AB"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_yeucauxe_thoigiancan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_yeucauxe_nguoiyeucau"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="thời gian cần"
+                android:textColor="#FB8C00"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

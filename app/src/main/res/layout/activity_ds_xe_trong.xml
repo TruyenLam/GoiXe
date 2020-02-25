@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dsXeTrongActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Thông Tin Xe Trống"
+        android:textColor="#3949AB"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_ttyeucauxe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Chọn Xe"
+        android:textColor="#3949AB"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView_ttyeucauxe2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Mã số xe"
+        android:textColor="#3949AB"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe" />
+
+    <TextView
+        android:id="@+id/textView_ttyeucauxe3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Loại xe"
+        android:textColor="#3949AB"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView_ttyeucauxe2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe" />
+
+    <TextView
+        android:id="@+id/textView_ttyeucauxe4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Vị trí"
+        android:textColor="#3949AB"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView_ttyeucauxe3"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Danh sách xe trống"
+        android:textColor="#E91E63"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dsxetrong_thongbao" />
+
+    <TextView
+        android:id="@+id/tv_dsxetrong_masoxe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#E53935"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView_ttyeucauxe2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe2" />
+
+    <TextView
+        android:id="@+id/tv_dsxetrong_loaixe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#E53935"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe2" />
+
+    <TextView
+        android:id="@+id/tv_dsxetrong_vitri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#E53935"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView_ttyeucauxe3"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe4" />
+
+    <ListView
+        android:id="@+id/listView_dsXeTrong"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:layout_editor_absoluteX="-16dp">
+
+    </ListView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_dsxetrong"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Hoàn Thành"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ttyeucauxe" />
+
+    <TextView
+        android:id="@+id/tv_dsxetrong_thongbao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#F0102D"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_dsxetrong" />
+
+    <EditText
+        android:id="@+id/edt_dsXeTrong_sreach"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:hint="tìm kiếm số xe"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/listView_dsXeTrong"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_dsxetrong_Scan"
+        app:layout_constraintStart_toEndOf="@+id/textView7" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_dsxetrong_Scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/listView_dsXeTrong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+</androidx.constraintlayout.widget.ConstraintLayout>
