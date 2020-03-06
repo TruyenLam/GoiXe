@@ -88,16 +88,35 @@ public class tapKetActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //lấy giá trị edittext trong item listview tap kết
-                masoxenull=xevai_adapter.getItem(0).toString();
-                Log.e("MasoxenullPut= ",masoxenull);
                 if(maViTri.equals(""))
                 {
-
                     //Toast.makeText(dsXeTrongActivity.this,"Bạn chưa chọn xe",Toast.LENGTH_SHORT).show();
                     thongBao("Bạn chưa chọn vị trí",0);
-                }else {
-                    Log.e("HoanThanhXeTrong","nhấn nút hoan thành");
-                    thongBao("Đã hoàn thành",1);
+                }
+                else {
+                        //kiểm tra mã số xe null thì lấy giá trị nhập vào từ edittext
+                        if (xeVai_modelList.get(0).getMaSoXe().equals("N/A")){
+                            masoxenull = xevai_adapter.getItem(0).toString();
+                            dsMaSoXe=masoxenull;
+                        }
+                        else {
+                            for (int i=0;i<xeVai_modelList.size();i++)
+                            {
+                                XeVai_Model xeVai_model = xeVai_modelList.get(i);
+                                if (i==xeVai_modelList.size()-1){
+                                    dsMaSoXe += xeVai_model.getMaSoXe();
+                                }
+                                else{
+                                    dsMaSoXe += xeVai_model.getMaSoXe()+",";
+                                }
+
+                            }
+                        }
+
+//                        Log.e("MasoxenullPut= ",masoxenull);
+                        Log.e("dsMaSoXe", dsMaSoXe);
+                        Log.e("HoanThanhXeTrong","nhấn nút hoan thành");
+                        thongBao("Đã hoàn thành",1);
 
                 }
             }
@@ -160,20 +179,7 @@ public class tapKetActivity extends AppCompatActivity {
 //        https://local.thttextile.com.vn/thtapigate/api/QLSX/XeVai/Put_HoanThanhTapKetMe
 //        Phương thức: Put
 //        Parameter: string idYeuCau, string dsMaSoXe, string maViTri
-        //kiểm tra mã số xe null thì lấy giá trị nhập vào từ edittext
-        if (masoxenull.equals("")){
-            for (int i=0;i<xeVai_modelList.size();i++)
-            {
-                dsMaSoXe +=xeVai_modelList.get(i).getMaSoXe();
-            }
-        }
-        else{
-            dsMaSoXe = masoxenull;
-        }
 
-
-
-        Log.e("dsMaSoXe", dsMaSoXe);
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://local.thttextile.com.vn/thtapigate/api/QLSX/XeVai/Put_HoanThanhTapKetMe").newBuilder();
         urlBuilder.addQueryParameter("IDYeuCau", idYeuCau);
