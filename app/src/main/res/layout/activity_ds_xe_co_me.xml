@@ -40,13 +40,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/tv_dsXeCoMe_thongbao"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edt_dsXeCoMe_thongbao"
+        android:layout_width="0dp"
+        android:hint="Nhập ms xe"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:textColor="#D81B60"
         android:textSize="24sp"
         android:textStyle="bold|italic"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/lv_dsXeCoMe"
         app:layout_constraintEnd_toStartOf="@+id/button_dsxecome_ht"
         app:layout_constraintStart_toStartOf="parent"

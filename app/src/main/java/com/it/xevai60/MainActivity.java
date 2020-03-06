@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -55,7 +56,7 @@ public class MainActivity extends Activity {
     LV_YeuCauXe_Adapter adapter_lv = null; //new LV_YeuCauXe_Adapter(MainActivity.this,idArray,loaiXeArray,loaiYeuCaunArray,maMeArray,maSoXeArray,nguoiYeuCauArray,thoiGianCanArray,viTriCanArray);
     int vitri =-1; // Vi tri chon tren man hinh
     Button btn_yeucauxe_doixe;
-
+    TextView txt_YeuCauXe_tongcong;
     //auto referch
     SwipeRefreshLayout swipeLayout;
     Handler mHandler; //tự động load lại dữ liệu
@@ -78,6 +79,7 @@ public class MainActivity extends Activity {
 
         listView_YeuCauXe = (ListView) findViewById(R.id.listView_YeuCauXe);
         btn_yeucauxe_doixe=(Button) findViewById(R.id.btn_yeucauxe_doixe);
+        txt_YeuCauXe_tongcong = (TextView) findViewById(R.id.txt_YeuCauXe_tongcong);
         //Tải dử liệu từ API về đổ vào các Array
 //        try {
 //            getHttpResponse();
@@ -110,6 +112,7 @@ public class MainActivity extends Activity {
                 // Your code here
                 //Toast.makeText(getApplicationContext(), "Works!", Toast.LENGTH_LONG).show();
                 //load lai listview
+                Log.i("okRefresh","load lai du lieu");
                 Clear_dataListView();
                 getYeuCauXe();
                 // To keep animation for 3 seconds
@@ -179,6 +182,7 @@ public class MainActivity extends Activity {
         Log.d("MainActivity","onRestart MainActivity");
         //xoa toàn bộ data array củ cập nhật mới
         Clear_dataListView();
+        txt_YeuCauXe_tongcong.setText("");
         getYeuCauXe();
 //        try {
 //            getHttpResponse();
@@ -222,7 +226,7 @@ public class MainActivity extends Activity {
                 //test
                 int count = adapter_lv.getCount();
                 Log.e("soItemLV", "Số lượng: " + String.valueOf(count));
-
+                txt_YeuCauXe_tongcong.setText(count+"");
                 //lấy giá trị vị trí hiện tại
                 listView_YeuCauXe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -393,6 +397,7 @@ public class MainActivity extends Activity {
         mAPIService.getYeuCauXe(headers).enqueue(new retrofit2.Callback<List<YeuCauXe>>() {
             @Override
             public void onResponse(retrofit2.Call<List<YeuCauXe>> call, retrofit2.Response<List<YeuCauXe>> response) {
+                Clear_dataListView();
                 if (response.code()==200){
 
                     ArrayList<YeuCauXe> yeuCauXeArrayList = (ArrayList<YeuCauXe>) response.body();

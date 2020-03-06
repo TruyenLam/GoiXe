@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,9 +41,9 @@ public class dsXeCoMeActivity extends AppCompatActivity {
     ArrayList<String> maMeArray = new ArrayList<>();
 
     ListView lv_dsXeCoMe;
-    TextView txtthongbao;
+    EditText edtinputdsMasoxe;
     Button btnHoanThanh;
-    String thongbao ="";
+
     String dsmasoxe = "";
 
     @Override
@@ -50,7 +51,7 @@ public class dsXeCoMeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ds_xe_co_me);
         loadThongTin_XeMe();
-        txtthongbao =(TextView) findViewById(R.id.tv_dsXeCoMe_thongbao);
+        edtinputdsMasoxe =(EditText) findViewById(R.id.edt_dsXeCoMe_thongbao);
         btnHoanThanh = (Button) findViewById(R.id.button_dsxecome_ht);
         lv_dsXeCoMe= (ListView) findViewById(R.id.lv_dsXeCoMe);
 
@@ -62,6 +63,8 @@ public class dsXeCoMeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //edtinputdsMasoxe.setVisibility(View.VISIBLE);
+
 
 
         //nút nhấn hoàn thành
@@ -69,27 +72,73 @@ public class dsXeCoMeActivity extends AppCompatActivity {
         btnHoanThanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (maSoXeArray.get(0).equals("N/A")){
+                    dsmasoxe=edtinputdsMasoxe.getText().toString();
+                }
                 //dsmasoxe = maSoXeArray.toString();
-                dsmasoxe ="";
-                for(int i=0;i < maSoXeArray.size();i++)
-                {
-                    if(i==0){
-                        dsmasoxe =maSoXeArray.get(i);
-                    }else {
-                        dsmasoxe += ","+maSoXeArray.get(i);
+                if (dsmasoxe.equals("")){
+                    for(int i=0;i < maSoXeArray.size();i++)
+                    {
+                        if(i==0){
+                            dsmasoxe =maSoXeArray.get(i);
+                        }else {
+                            dsmasoxe += ","+maSoXeArray.get(i);
+                        }
                     }
                 }
+
 //              //day no len WEB API, 200 BAO THANH CONG TRỞ VỀ MÀN HÌNH BAN ĐẦU
 
-                Log.e("StringArrayMaSoXe",idyeuCau+" "+dsmasoxe);
-                //Toast.makeText(dsXeCoMeActivity.this, dsmasoxe,Toast.LENGTH_SHORT).show();
-                thongBao();
+                Log.e("PutYeuCauMe",idyeuCau+" "+dsmasoxe);
+               if (dsmasoxe.equals("N/A")){
+                   thongBaoError("Chưa điền thông tin mã xe",0);
+               }
+               else {
+                   thongBao();
+               }
 
             }
         });
 
     }
+    private  void thongBaoError(String thongbao, int ht){
+        AlertDialog.Builder builder = new AlertDialog.Builder(dsXeCoMeActivity.this);
 
+        if (ht == 1) {
+            builder.setTitle("Thông Báo")
+                    //.setMessage(thongbao)
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(dsXeCoMeActivity.this,"Selected Option: YES",Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(dsXeCoMeActivity.this,"Selected Option: No",Toast.LENGTH_SHORT).show();
+                        }
+                    })
+            ;
+        }else {
+            builder.setTitle("Công Việc")
+                    .setMessage(thongbao)
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(dsXeCoMeActivity.this,"Selected Option: YES",Toast.LENGTH_SHORT).show();
+                            //hoanthanh_xetrong();
+                        }
+                    });
+        }
+
+        //Creating dialog box
+        AlertDialog dialog  = builder.create();
+        dialog.show();
+    }
     private void hoanthanh_xeme() {
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://local.thttextile.com.vn/thtapigate/api/QLSX/XeVai/Put_HoanThanhYeuCauMe").newBuilder();
         urlBuilder.addQueryParameter("IDYeuCau", idyeuCau);
@@ -118,9 +167,18 @@ public class dsXeCoMeActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String mMessage = response.body().string();
                 Log.e("Thanhcong Put xe", mMessage);
-
-                dsXeCoMeActivity.this.finish();
-
+                if (mMessage.contains("ErrorXeVai"))
+                {
+                    dsXeCoMeActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            thongBaoError("Kiểm tra lại mã số xe ??",0);
+                        }
+                    });
+                }
+                else {
+                    dsXeCoMeActivity.this.finish();
+                }
 
             }
         });
@@ -197,8 +255,10 @@ public class dsXeCoMeActivity extends AppCompatActivity {
                 int count = adapter.getCount();
                 Log.e("soItemLV", "Số lượng: " + String.valueOf(count));
 
-                //lấy giá trị vị trí hiện tại
-
+                //nếu n/a thì phải hiển thị lên nhập tay
+                if (maSoXeArray.get(0).equals("N/A")){
+                   edtinputdsMasoxe.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

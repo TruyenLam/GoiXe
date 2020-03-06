@@ -64,4 +64,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txt_YeuCauXe_tongcong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:padding="5dp"
+        android:textColor="#dd0074"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

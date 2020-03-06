@@ -206,7 +206,6 @@ tools:context=".LoginActivity">
                     android:maxLength="10"
                     android:maxLines="1"
                     android:paddingTop="5dp"
-                    android:text="truyen.lv"
                     android:textColorHint="#333232"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="15sp" />
@@ -243,7 +242,6 @@ tools:context=".LoginActivity">
                         android:inputType="textPassword"
                         android:maxLength="10"
                         android:maxLines="1"
-                        android:text="123"
                         android:textColor="#333232"
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:textSize="15sp" />
@@ -257,7 +255,8 @@ tools:context=".LoginActivity">
                         android:gravity="bottom"
                         android:text="Quên mật khẩu"
                         android:textColor="#38b5f2"
-                        android:textSize="13.3sp" />
+                        android:textSize="13.3sp"
+                        android:visibility="invisible" />
 
                 </RelativeLayout>
 

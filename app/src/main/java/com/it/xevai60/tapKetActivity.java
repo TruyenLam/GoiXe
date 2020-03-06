@@ -18,9 +18,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.it.xevai60.adapter.LV_TapKetXe;
 import com.it.xevai60.adapter.LV_viTriXeVai_Adapter;
 import com.it.xevai60.adapter.LV_xevai_Adapter;
 import com.it.xevai60.model.ViTriXeVai_Model;
@@ -54,9 +56,12 @@ public class tapKetActivity extends AppCompatActivity {
     TextView txtmaViTri,txtmoTa,edt_vitriTapKet_sreach;
     Button btn_tapketxe_hoanthanh;
 
-    LV_xevai_Adapter xevai_adapter = null;
+    LV_TapKetXe xevai_adapter = null;
     LV_viTriXeVai_Adapter viTriXeVai_adapter = null;
     String dsMaSoXe="",maViTri="";
+
+    //lay gia trị của item_xetapketnull
+    String masoxenull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class tapKetActivity extends AppCompatActivity {
         txtmoTa = (TextView) findViewById(R.id.tv_tapket_mota) ;
         edt_vitriTapKet_sreach = (EditText) findViewById(R.id.edt_vitriTapKet_sreach);
         btn_tapketxe_hoanthanh =(Button) findViewById(R.id.btn_tapketxe_hoanthanh);
+
         loadYeuCauTapKet();
 
         try {
@@ -81,6 +87,9 @@ public class tapKetActivity extends AppCompatActivity {
         btn_tapketxe_hoanthanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //lấy giá trị edittext trong item listview tap kết
+                masoxenull=xevai_adapter.getItem(0).toString();
+                Log.e("MasoxenullPut= ",masoxenull);
                 if(maViTri.equals(""))
                 {
 
@@ -101,6 +110,9 @@ public class tapKetActivity extends AppCompatActivity {
                 new IntentIntegrator(tapKetActivity.this).initiateScan();
             }
         });
+
+
+
     }
     public void init(){
         IntentIntegrator integrator = new IntentIntegrator(this);
@@ -148,13 +160,19 @@ public class tapKetActivity extends AppCompatActivity {
 //        https://local.thttextile.com.vn/thtapigate/api/QLSX/XeVai/Put_HoanThanhTapKetMe
 //        Phương thức: Put
 //        Parameter: string idYeuCau, string dsMaSoXe, string maViTri
-
-
-
-        for (int i=0;i<xeVai_modelList.size();i++)
-        {
-            dsMaSoXe +=xeVai_modelList.get(i).getMaSoXe();
+        //kiểm tra mã số xe null thì lấy giá trị nhập vào từ edittext
+        if (masoxenull.equals("")){
+            for (int i=0;i<xeVai_modelList.size();i++)
+            {
+                dsMaSoXe +=xeVai_modelList.get(i).getMaSoXe();
+            }
         }
+        else{
+            dsMaSoXe = masoxenull;
+        }
+
+
+
         Log.e("dsMaSoXe", dsMaSoXe);
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://local.thttextile.com.vn/thtapigate/api/QLSX/XeVai/Put_HoanThanhTapKetMe").newBuilder();
@@ -185,8 +203,19 @@ public class tapKetActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String mMessage = response.body().string();
                 Log.e("Thanhcong Put tapket", mMessage);
-
-                tapKetActivity.this.finish();
+                //kiểm tra lỗi thành công hay không
+                if (mMessage.contains("ErrorXeVai"))
+                {
+                    tapKetActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                        thongBao("Kiểm tra lại mã số xe ??",0);
+                        }
+                    });
+                }
+                else {
+                    tapKetActivity.this.finish();
+                }
 
 
             }
@@ -304,7 +333,7 @@ public class tapKetActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                xevai_adapter = new LV_xevai_Adapter(tapKetActivity.this,xeVai_modelList);
+                xevai_adapter = new LV_TapKetXe(tapKetActivity.this,xeVai_modelList);
                 lv_xetapket.setAdapter(xevai_adapter);
 
 //                test
